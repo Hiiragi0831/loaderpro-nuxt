@@ -5,7 +5,10 @@
 </script>
 
 <template>
-  <h1>Index</h1>
+  <div class="site">
+    <Header/>
+    <slot />
+  </div>
 </template>
 
 <style scoped>

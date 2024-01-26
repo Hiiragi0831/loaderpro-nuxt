@@ -1,11 +1,12 @@
 <script setup lang="ts">
-  definePageMeta({
-    layout: 'default'
-  })
+
 </script>
 
 <template>
-  <h1>Index</h1>
+  <div class="site">
+    <h1>Start</h1>
+    <slot />
+  </div>
 </template>
 
 <style scoped>
