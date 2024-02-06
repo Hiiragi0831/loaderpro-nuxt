@@ -23,8 +23,8 @@ export default defineComponent({
 			});
 	},
 	methods: {
-		goTo(id: string) {
-			this.$router.push('/post/' + id);
+		goTo(id) {
+			this.$router.push('/blog/' + id);
 		},
 	},
 });
