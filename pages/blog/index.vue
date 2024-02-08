@@ -1,33 +1,5 @@
-<script type="ts">
-// type Post = {
-// 	id: string | number;
-// 	title: string;
-// 	description: string;
-// 	text: string;
-// 	date: Date;
-// 	image: string;
-// };
-export default defineComponent({
-	data() {
-		return {
-			posts: []
-		};
-	},
-	created() {
-		fetch('https://7b554fec6e7060c7.mokky.dev/blog')
-			.then((res) => res.json())
-			.then((posts) => {
-				// store the posts in the reactive state
-				console.log(posts);
-				this.posts = posts;
-			});
-	},
-	methods: {
-		goTo(id) {
-			this.$router.push('/blog/' + id);
-		},
-	},
-});
+<script setup type="ts">
+	const { data: posts } = useFetch('https://7b554fec6e7060c7.mokky.dev/blog');
 </script>
 
 <template>
@@ -40,8 +12,7 @@ export default defineComponent({
 					<div class="card-body">
 						<h5 class="card-title">{{ post.title }}</h5>
 						<p class="card-text">{{ post.description }}</p>
-<!--						<NuxtLink class="btn btn-primary" to="'/post/' + post.id">Go somewhere</NuxtLink>-->
-						<button class="btn btn-primary" @click.prevent="goTo(post.id)">Go somewhere</button>
+						<NuxtLink class="btn btn-primary" :to="`/blog/${post.id}`">Go somewhere</NuxtLink>
 					</div>
 				</div>
 			</div>
