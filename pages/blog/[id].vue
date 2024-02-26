@@ -8,13 +8,17 @@
 
 	const { id } = useRoute().params;
 
-	const { data: post } = useFetch(`https://7b554fec6e7060c7.mokky.dev/blog/${id}`);
+	const { data: post, pending } = await useFetch(`https://7b554fec6e7060c7.mokky.dev/blog/${id}`, {
+		lazy: true,
+		server: false,
+	});
 	console.log(id, post);
 </script>
 
 <template>
-	<div class="container">
-<!--		<img :src="post.image" :alt="post.title">-->
+	<div v-if="pending">Loading ...</div>
+	<div v-else class="container">
+		<img :src="post.image" :alt="post.title">
 		<h1>{{ post.title }}</h1>
 		<h4>{{ post.description }}</h4>
 		<p>{{ post.text }}</p>
